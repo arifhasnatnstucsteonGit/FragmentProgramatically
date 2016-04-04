@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonFragmentOne= (Button) findViewById(R.id.buttonFragmentOne);
         Button buttonFragmentTwo= (Button) findViewById(R.id.buttonFragmentTwo);
+        Button button= (Button) findViewById(R.id.button);
 
         buttonFragmentOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +65,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Bundle bundle = new Bundle();
+                String myMessage = "Stackoverflow is cool!";
+                bundle.putString("message", myMessage );
+                FragmentOne fragInfo = new FragmentOne();
+                fragInfo.setArguments(bundle);
+                transaction.replace(R.id.fragmentContainerLayout, fragInfo);
+                transaction.commit();
+
+            }
+        });
+
+
     }
 
     @Override

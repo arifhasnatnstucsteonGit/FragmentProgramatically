@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.zip.Inflater;
 
@@ -25,6 +26,11 @@ public class FragmentOne extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_one, container, false);
+
+        Bundle bundle = this.getArguments();
+        String myValue = bundle.getString("message");
+
+        Toast.makeText(getActivity().getApplicationContext(),myValue,Toast.LENGTH_LONG).show();
 
         fragmentTwo= (Button) view.findViewById(R.id.buttonFragmentTwo_FragmentOne);
         mainActivity = (Button) view.findViewById(R.id.buttonMainActivity_FragmentOne);
